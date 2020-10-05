@@ -1,6 +1,6 @@
 import React from 'react';
-import MainSection from "./MainSection";
 import DataApi from "../services/DataApi";
+import MainSection from "./sections/MainSection";
 
 interface AppState {
     isLoggedIn: boolean,

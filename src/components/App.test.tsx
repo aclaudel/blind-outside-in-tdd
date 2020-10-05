@@ -1,9 +1,9 @@
 import React from "react";
 import {shallow} from "enzyme";
 import App from "./App";
-import MainSection from "./MainSection";
 import {instance, mock, when} from "ts-mockito";
 import DataApi from "../services/DataApi";
+import MainSection from "./sections/MainSection";
 
 describe("App", () => {
     it("shouldn't be logged in by default", () => {
