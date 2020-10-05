@@ -1,5 +1,10 @@
+import {sleep} from 'sleep'
+
 export default class DataApi {
     getItems(): Promise<any[]> {
-        return Promise.resolve([{id: 1}, {id: 2}])
+        return new Promise((resolve) =>
+            setTimeout(
+                () => resolve([{id: 1}, {id: 2}]),
+                2000))
     }
 }
