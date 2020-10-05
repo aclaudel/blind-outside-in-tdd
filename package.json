@@ -22,7 +22,7 @@
     "react-scripts": "3.4.3",
     "sleep": "^6.3.0",
     "ts-mockito": "^2.6.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "start": "react-scripts start",
