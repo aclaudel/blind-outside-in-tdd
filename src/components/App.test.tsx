@@ -12,6 +12,13 @@ describe("App", () => {
         expect(mainSection.props().isLoggedIn).toBe(false);
     });
 
+    it("should provide the login callback", () => {
+        const app = shallow<App>(<App />)
+        const mainSection = app.find(MainSection)
+        expect(mainSection.props().loginCallback).toBe(app.instance().login);
+    });
+
+
     it("should load the data once logged in", () => {
         const dataApiMock = mock(DataApi)
         when(dataApiMock.getItems()).thenReturn(new Promise(() => {}))

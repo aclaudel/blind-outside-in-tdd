@@ -41,6 +41,7 @@ export default class App extends React.Component<AppProps, AppState> {
 
     render() {
         return <MainSection isLoggedIn={this.state.isLoggedIn}
+                            loginCallback={this.login}
                             isLoading={this.state.isLoading}
                             items={this.state.items}/>;
     }
