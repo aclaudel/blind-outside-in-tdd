@@ -10,7 +10,7 @@ describe("Query section", () => {
         render(<QuerySection fetchCallback={fetchCallbackMock}/>)
 
         act(() => {
-            userEvent.click(screen.getByTestId("query-button"))
+            userEvent.click(screen.getByTestId("fetch-button"))
         })
 
         expect(fetchCallbackMock).toHaveBeenCalled()
