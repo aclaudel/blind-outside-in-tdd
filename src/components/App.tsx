@@ -3,7 +3,6 @@ import DataApi from "../services/DataApi";
 import MainSection from "./sections/MainSection";
 
 interface AppState {
-    isLoggedIn: boolean,
     isLoading: boolean,
     items: any[]
 }
@@ -15,24 +14,22 @@ interface AppProps {
 export default class App extends React.Component<AppProps, AppState> {
     constructor(props) {
         super(props);
-        this.login = this.login.bind(this)
+        this.fetch = this.fetch.bind(this)
         this.state = {
-            isLoggedIn: false,
             isLoading: false,
             items: []
         }
     }
 
-    login() {
+    fetch() {
         this.setState({
-            isLoggedIn: true,
-            isLoading: true
+            isLoading: true,
+            items: []
         })
 
         this.props.dataApi.getItems()
             .then(items => {
                 this.setState({
-                    isLoggedIn: true,
                     isLoading: false,
                     items: items
                 })
@@ -40,8 +37,7 @@ export default class App extends React.Component<AppProps, AppState> {
     }
 
     render() {
-        return <MainSection isLoggedIn={this.state.isLoggedIn}
-                            loginCallback={this.login}
+        return <MainSection fetchCallback={this.fetch}
                             isLoading={this.state.isLoading}
                             items={this.state.items}/>;
     }

@@ -6,28 +6,29 @@ import DataApi from "../services/DataApi";
 import MainSection from "./sections/MainSection";
 
 describe("App", () => {
-    it("shouldn't be logged in by default", () => {
+    it("shouldn't display items nor loading by default", () => {
         const app = shallow(<App />)
         const mainSection = app.find(MainSection)
-        expect(mainSection.props().isLoggedIn).toBe(false);
+        expect(mainSection.props().isLoading).toBe(false);
+        expect(mainSection.props().items).toHaveLength(0);
     });
 
-    it("should provide the login callback", () => {
+    it("should provide the fetch callback", () => {
         const app = shallow<App>(<App />)
         const mainSection = app.find(MainSection)
-        expect(mainSection.props().loginCallback).toBe(app.instance().login);
+        expect(mainSection.props().fetchCallback).toBe(app.instance().fetch);
     });
 
-    it("should load the data once logged in", () => {
+    it("should switch to loading state when data is loading", () => {
         const dataApiMock = mock(DataApi)
         when(dataApiMock.getItems()).thenReturn(new Promise(() => {}))
         const app = shallow<App>(<App dataApi={instance(dataApiMock)} />)
 
-        app.instance().login()
+        app.instance().fetch()
 
         const mainSection = app.find(MainSection)
-        expect(mainSection.props().isLoggedIn).toBe(true);
         expect(mainSection.props().isLoading).toBe(true);
+        expect(mainSection.props().items).toHaveLength(0);
     })
 
     it("should render the data once available", async () => {
@@ -36,10 +37,9 @@ describe("App", () => {
         when(dataApiMock.getItems()).thenReturn(Promise.resolve(items))
         const app = shallow<App>(<App dataApi={instance(dataApiMock)} />)
 
-        await app.instance().login()
+        await app.instance().fetch()
 
         const mainSection = app.find(MainSection)
-        expect(mainSection.props().isLoggedIn).toBe(true);
         expect(mainSection.props().isLoading).toBe(false);
         expect(mainSection.props().items).toBe(items);
     })
