@@ -7,14 +7,14 @@ import MainSection from "./sections/MainSection";
 
 describe("App", () => {
     it("shouldn't display items nor loading by default", () => {
-        const app = shallow(<App />)
+        const app = shallow(<App dataApi={mock(DataApi)}/>)
         const mainSection = app.find(MainSection)
         expect(mainSection.props().isLoading).toBe(false);
         expect(mainSection.props().items).toHaveLength(0);
     });
 
     it("should provide the fetch callback", () => {
-        const app = shallow<App>(<App />)
+        const app = shallow<App>(<App dataApi={mock(DataApi)}/>)
         const mainSection = app.find(MainSection)
         expect(mainSection.props().fetchCallback).toBe(app.instance().fetch);
     });
