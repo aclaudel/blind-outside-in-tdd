@@ -18,7 +18,6 @@ describe("App", () => {
         expect(mainSection.props().loginCallback).toBe(app.instance().login);
     });
 
-
     it("should load the data once logged in", () => {
         const dataApiMock = mock(DataApi)
         when(dataApiMock.getItems()).thenReturn(new Promise(() => {}))
