@@ -1,5 +1,5 @@
 export default class DataApi {
     getItems(): Promise<any[]> {
-        throw new Error('not yet implemented')
+        return Promise.resolve([{id: 1}, {id: 2}])
     }
 }

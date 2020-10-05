@@ -6,13 +6,13 @@ import {act} from "react-dom/test-utils";
 
 describe("Query section", () => {
     it("should render a fetch button with the callback", () => {
-        const queryCallbackMock = jest.fn()
-        render(<QuerySection queryCallback={queryCallbackMock}/>)
+        const fetchCallbackMock = jest.fn()
+        render(<QuerySection fetchCallback={fetchCallbackMock}/>)
 
         act(() => {
             userEvent.click(screen.getByTestId("query-button"))
         })
 
-        expect(queryCallbackMock).toHaveBeenCalled()
+        expect(fetchCallbackMock).toHaveBeenCalled()
     });
 });

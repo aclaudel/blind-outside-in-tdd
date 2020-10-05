@@ -4,9 +4,10 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from "./components/App";
+import DataApi from "./services/DataApi";
 
 ReactDOM.render(
-    <App />,
+    <App dataApi={new DataApi()}/>,
     document.getElementById('root')
 );
 

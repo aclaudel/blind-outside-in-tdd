@@ -13,5 +13,5 @@ export default function MainSection(props) {
         return <ItemSection items={props.items} />
     }
 
-    return <QuerySection queryCallback={props.queryCallback}/>;
+    return <QuerySection fetchCallback={props.fetchCallback}/>;
 }

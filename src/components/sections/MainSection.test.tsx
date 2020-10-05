@@ -7,12 +7,12 @@ import QuerySection from "./query/QuerySection";
 
 describe("Main section", () => {
     it("should render the Query section if no items and not loading", () => {
-        const queryCallback = jest.fn()
-        const app = shallow(<MainSection isLoading={false} items={[]} queryCallback={queryCallback}/>)
+        const fetchCallback = jest.fn()
+        const app = shallow(<MainSection isLoading={false} items={[]} queryCallback={fetchCallback}/>)
 
         const loginSection = app.find(QuerySection)
 
-        expect(loginSection.props().queryCallback).toBe(queryCallback)
+        expect(loginSection.props().fetchCallback).toBe(fetchCallback)
     });
 
     it("should render the loading section when loading flag", () => {
