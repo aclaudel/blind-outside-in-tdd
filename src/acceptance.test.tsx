@@ -6,16 +6,16 @@ import userEvent from "@testing-library/user-event";
 import {act} from "react-dom/test-utils";
 
 describe("My App", () => {
-    it("should display data when requested", async () => {
-        render(<App  dataApi={new DataApi()} />)
+  it("should display data when requested", async () => {
+    render(<App dataApi={new DataApi()}/>)
 
-        act(() => {
-            userEvent.click(screen.getByTestId("fetch-button"))
-        })
+    act(() => {
+      userEvent.click(screen.getByTestId("fetch-button"))
+    })
 
-        const items = await screen.findAllByTestId("item")
-        expect(items).toHaveLength(2)
-        items.forEach(item =>
-            expect(item).toBeInTheDocument())
-    });
+    const items = await screen.findAllByTestId("item")
+    expect(items).toHaveLength(2)
+    items.forEach(item =>
+      expect(item).toBeInTheDocument())
+  });
 });

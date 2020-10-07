@@ -7,8 +7,8 @@ import App from "./components/App";
 import DataApi from "./services/DataApi";
 
 ReactDOM.render(
-    <App dataApi={new DataApi()}/>,
-    document.getElementById('root')
+  <App dataApi={new DataApi()}/>,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
