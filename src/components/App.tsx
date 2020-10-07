@@ -6,7 +6,6 @@ export default class App extends React.Component<any, any> {
   }
 
   render() {
-    throw new Error('App component not yet implemented')
     return <div />
   }
 }
