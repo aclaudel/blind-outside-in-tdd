@@ -7,8 +7,8 @@ export default {
   component: LoadingSection,
 };
 
-export const LoadingSpinner = () =>
+export const Default = () =>
   <LoadingSection />;
 
 export const FancyLoadingSpinner = () =>
-  <LoadingSection isFancy={true}/>;
+  <LoadingSection coolio={true}/>;

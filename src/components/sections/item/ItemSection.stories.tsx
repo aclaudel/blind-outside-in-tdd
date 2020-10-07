@@ -7,13 +7,14 @@ export default {
   component: ItemSection,
 };
 
-export const NoItem = () =>
-  <ItemSection items={[]}/>;
-
-export const OneItem = () =>
+export const Default = () =>
   <ItemSection items={[
     {id: 1, name: 'Arnaud'}
   ]}/>;
+
+
+export const NoItem = () =>
+  <ItemSection items={[]}/>;
 
 export const MultipleItems = () =>
   <ItemSection items={[
