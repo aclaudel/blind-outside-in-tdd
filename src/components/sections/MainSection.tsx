@@ -1,6 +1,6 @@
 import React from "react";
+import QuerySection from "./query/QuerySection";
 
 export default function MainSection(props) {
-  throw new Error('Main section component not yet implemented')
-  return <div />
+  return <QuerySection fetchCallback={props.fetchCallback}/>;
 }
