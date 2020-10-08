@@ -3,6 +3,7 @@ import MainSection from "./MainSection";
 import {shallow} from "enzyme";
 import QuerySection from "./query/QuerySection";
 import LoadingSection from "./loading/LoadingSection";
+import ItemSection from "./item/ItemSection";
 
 describe("Main section", () => {
   it("should render the Query section if no items and not loading", () => {
@@ -20,4 +21,11 @@ describe("Main section", () => {
     expect(app.find(LoadingSection).exists()).toBe(true)
   });
 
+  it("should render the item section if not loading and items present", () => {
+    const items = [{id: 1}]
+    const app = shallow(<MainSection isLoading={false} items={items}/>)
+
+    const itemSection = app.find(ItemSection)
+    expect(itemSection.props().items).toBe(items)
+  })
 });
