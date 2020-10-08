@@ -16,6 +16,14 @@ export default class App extends React.Component<any, any> {
       isLoading: true,
       items: []
     })
+
+    this.props.dataApi.getItems()
+      .then(items => {
+        this.setState({
+          isLoading: false,
+          items: items
+        })
+      })
   }
 
   render() {

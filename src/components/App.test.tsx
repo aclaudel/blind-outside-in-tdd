@@ -32,4 +32,18 @@ describe("App", () => {
     expect(mainSection.props().isLoading).toBe(true);
     expect(mainSection.props().items).toHaveLength(0);
   })
+
+  it("should render the data once available", async () => {
+    const items = [{id: 1}];
+    const dataApiMock = mock(DataApi)
+    when(dataApiMock.getItems()).thenReturn(Promise.resolve(items))
+    const app = shallow<App>(<App dataApi={instance(dataApiMock)}/>)
+
+    await app.instance().fetch()
+
+    const mainSection = app.find(MainSection)
+    expect(mainSection.props().isLoading).toBe(false);
+    expect(mainSection.props().items).toBe(items);
+  })
+
 });
