@@ -12,7 +12,10 @@ export default class App extends React.Component<any, any> {
   }
 
   fetch() {
-
+    this.setState({
+      isLoading: true,
+      items: []
+    })
   }
 
   render() {

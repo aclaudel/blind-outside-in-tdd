@@ -20,4 +20,16 @@ describe("App", () => {
     const mainSection = app.find(MainSection)
     expect(mainSection.props().fetchCallback).toBe(app.instance().fetch);
   });
+
+  it("should switch to loading state when callback is called and data is loading", async () => {
+    const dataApiMock = mock(DataApi)
+    when(dataApiMock.getItems()).thenReturn(new Promise(() => {}))
+    const app = shallow<App>(<App dataApi={instance(dataApiMock)}/>)
+
+    await app.instance().fetch()
+
+    const mainSection = app.find(MainSection)
+    expect(mainSection.props().isLoading).toBe(true);
+    expect(mainSection.props().items).toHaveLength(0);
+  })
 });
