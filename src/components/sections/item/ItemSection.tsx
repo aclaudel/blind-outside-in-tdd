@@ -2,6 +2,14 @@ import React from "react";
 import {Alert, Card} from "react-bootstrap";
 
 export default function ItemSection(props) {
+  if (props.items.length === 0) {
+    return (
+      <Alert variant={"danger"}>
+        Looks like there is no data to display :(
+      </Alert>
+    )
+  }
+
   return (
     <div>
       {props.items.map(item =>
