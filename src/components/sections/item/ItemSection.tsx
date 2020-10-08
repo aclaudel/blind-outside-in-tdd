@@ -10,6 +10,14 @@ export default function ItemSection(props) {
     )
   }
 
+  if (props.items.length === 1) {
+    return (
+      <Alert data-testid="item" variant={"success"}>
+        <b>{props.items[0].name}</b> you're the man!
+      </Alert>
+    )
+  }
+
   return (
     <div>
       {props.items.map(item =>
