@@ -14,4 +14,10 @@ describe("App", () => {
     expect(mainSection.props().isLoading).toBe(false);
     expect(mainSection.props().items).toHaveLength(0);
   });
+
+  it("should provide the fetch callback", () => {
+    const app = shallow<App>(<App dataApi={instance(mock(DataApi))}/>)
+    const mainSection = app.find(MainSection)
+    expect(mainSection.props().fetchCallback).toBe(app.instance().fetch);
+  });
 });
